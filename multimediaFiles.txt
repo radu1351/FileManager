@@ -1,1 +1,1 @@
-Denumire: Sunflower.jpg | Format: jpg | Locatie: C:\Users\RIancu\Desktop\Sunflower.jpg
+poza.jpg jpg C:\Users\RIancu\Desktop\poza.jpg

@@ -63,6 +63,7 @@ public class Main {
                     mapFormatToNumber.forEach((format, number) -> {
                         System.out.println("." + format + " : " + number);
                     });
+                    break;
                 }
                 case 2: {
                     String directory = multimediaFiles.stream()

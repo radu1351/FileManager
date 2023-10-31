@@ -12,11 +12,10 @@ public class FileReader {
         int returnVal = chooser.showOpenDialog(null);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             File selectedFIle = chooser.getSelectedFile();
-            MultimediaFile multimediaFile = new MultimediaFile(
+            return new MultimediaFile(
                     selectedFIle.getName(),
                     selectedFIle.getAbsolutePath().substring(selectedFIle.getAbsolutePath().length() - 3),
                     selectedFIle.getPath());
-            return multimediaFile;
         } else return null;
     }
 }

@@ -45,6 +45,6 @@ public class MultimediaFile {
 
     @Override
     public String toString() {
-        return "Denumire: " + this.name + " | Format: " + this.format + " | Locatie: " + this.path;
+        return this.name + " " + this.format + " " + this.path;
     }
 }
