@@ -48,7 +48,7 @@ public class Main {
         while (option != 3) {
             System.out.println("\n______________STATISTICI_______________\n" +
                     "| 1.Afisare numar fisiere pe formate. |\n" +
-                    "| 2.Prelucrare.... |\n" +
+                    "| 2.Afisare cel mai utilizat director. |\n" +
                     "| 3.Inapoi la meniul principal.       |\n" +
                     "_______________________________________");
 
@@ -63,6 +63,13 @@ public class Main {
                     mapFormatToNumber.forEach((format, number) -> {
                         System.out.println("." + format + " : " + number);
                     });
+                }
+                case 2: {
+                    String directory = multimediaFiles.stream()
+                            .collect(Collectors.groupingBy(MultimediaFile::getDirectory, Collectors.counting()))
+                            .keySet().iterator().next();
+                    System.out.println("Directorul cu cele mai multe fisiere salvate: " + directory);
+                    break;
                 }
                 case 3: {
                     break;

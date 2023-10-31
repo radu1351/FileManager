@@ -1,3 +1,7 @@
+import java.nio.file.FileSystem;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
+
 public class MultimediaFile {
     private String name;
     private String format;
@@ -33,8 +37,14 @@ public class MultimediaFile {
         this.path = path;
     }
 
+    public String getDirectory() {
+        Path path = FileSystems.getDefault().getPath(this.path);
+        Path parent = path.getParent();
+        return parent != null ? parent.toString() : null;
+    }
+
     @Override
     public String toString() {
-        return this.name + " " + this.format + " " + this.path;
+        return "Denumire: " + this.name + " | Format: " + this.format + " | Locatie: " + this.path;
     }
 }

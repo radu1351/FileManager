@@ -7,7 +7,7 @@ public class FileReader {
     public static MultimediaFile selectFile() {
         JFileChooser chooser = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
-                "Multimedia Files", "jpg", "mp3", "mp4");
+                "Multimedia Files", "jpg", "png", "mp3", "wav");
         chooser.setFileFilter(filter);
         int returnVal = chooser.showOpenDialog(null);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
