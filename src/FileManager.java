@@ -28,12 +28,13 @@ public class FileManager {
                 String line = sc.nextLine();
                 String[] parts = line.split(" ");
 
-                if (parts.length == 3) {
+                if (parts.length == 4) {
                     String name = parts[0];
                     String format = parts[1];
                     String path = parts[2];
+                    Float size = Float.parseFloat(parts[3].substring(0, parts[3].indexOf("MB")));
 
-                    MultimediaFile multimediaFile = new MultimediaFile(name, format, path);
+                    MultimediaFile multimediaFile = new MultimediaFile(name, format, path, size);
                     if (fileExistsOnDisk(multimediaFile)) {
                         multimediaFiles.add(multimediaFile);
                     }

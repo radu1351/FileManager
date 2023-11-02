@@ -1,6 +1,7 @@
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
+import java.text.DecimalFormat;
 
 public class FileReader {
 
@@ -15,7 +16,8 @@ public class FileReader {
             return new MultimediaFile(
                     selectedFIle.getName(),
                     selectedFIle.getAbsolutePath().substring(selectedFIle.getAbsolutePath().length() - 3),
-                    selectedFIle.getPath());
+                    selectedFIle.getPath(),
+                    Float.parseFloat(new DecimalFormat("#.##").format((float) selectedFIle.length() / 1000000)));  // To convert bytes to megabytes
         } else return null;
     }
 }

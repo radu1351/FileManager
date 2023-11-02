@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Scanner;
@@ -6,6 +7,7 @@ import java.util.stream.Collectors;
 public class Main {
 
     private static ArrayList<MultimediaFile> multimediaFiles = new ArrayList<>();
+
     private static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -49,7 +51,8 @@ public class Main {
             System.out.println("\n______________STATISTICI_______________\n" +
                     "| 1.Afisare numar fisiere pe formate. |\n" +
                     "| 2.Afisare cel mai utilizat director. |\n" +
-                    "| 3.Inapoi la meniul principal.       |\n" +
+                    "| 3.Afisare cel mai utilizat director. |\n" +
+                    "| 4.Inapoi la meniul principal.       |\n" +
                     "_______________________________________");
 
             System.out.print("\nIntroduceti optiunea dvs: ");
@@ -73,6 +76,9 @@ public class Main {
                     break;
                 }
                 case 3: {
+
+                }
+                case 4: {
                     break;
                 }
             }
