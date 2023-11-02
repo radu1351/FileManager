@@ -34,7 +34,9 @@ public class FileManager {
                     String path = parts[2];
 
                     MultimediaFile multimediaFile = new MultimediaFile(name, format, path);
-                    multimediaFiles.add(multimediaFile);
+                    if (fileExistsOnDisk(multimediaFile)) {
+                        multimediaFiles.add(multimediaFile);
+                    }
                 } else {
                     System.err.println("Invalid line format: " + line);
                 }
@@ -46,6 +48,10 @@ public class FileManager {
         }
 
         return multimediaFiles;
+    }
+
+    public static boolean fileExistsOnDisk(MultimediaFile multimediaFile) {
+        return new File(multimediaFile.getPath()).exists();
     }
 
     private static void createTxtFile() {
