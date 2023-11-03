@@ -10,6 +10,7 @@ public class MultimediaFile {
     private String path;
     private Float size; // size in megabytes
     private Date lastModified;
+    private boolean isFavourite;
 
     public MultimediaFile(String denumire, String format, String path, Float size, Date lastModified) {
         this.name = denumire;
@@ -17,6 +18,7 @@ public class MultimediaFile {
         this.path = path;
         this.size = size;
         this.lastModified = lastModified;
+        isFavourite = false;
     }
 
     public String getName() {
@@ -65,7 +67,13 @@ public class MultimediaFile {
         return parent != null ? parent.toString() : null;
     }
 
+    public boolean isFavourite() {
+        return isFavourite;
+    }
 
+    public void setFavourite(boolean favourite) {
+        isFavourite = favourite;
+    }
 
     @Override
     public String toString() {

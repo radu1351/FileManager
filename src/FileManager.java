@@ -10,7 +10,8 @@ public class FileManager {
         try {
             FileWriter fileWriter = new FileWriter("multimediaFiles.txt");
             for (MultimediaFile multimediaFile : multimediaFiles) {
-                fileWriter.write(multimediaFile.toString() + "\n");
+                fileWriter.write(multimediaFile.toString() + " | " +
+                        (multimediaFile.isFavourite() ? "1" : "0") + "\n");
             }
             fileWriter.close();
         } catch (IOException ex) {
@@ -29,14 +30,14 @@ public class FileManager {
                 String line = sc.nextLine();
                 String[] parts = line.split(" \\| ");
 
-                if (parts.length == 5) {
+                if (parts.length == 6) {
                     String name = parts[0];
                     String format = parts[1];
                     String path = parts[2];
                     Float size = Float.parseFloat(parts[3].substring(0, parts[3].indexOf("MB")));
                     Date lastModified = new Date(parts[4]);
-
                     MultimediaFile multimediaFile = new MultimediaFile(name, format, path, size, lastModified);
+                    multimediaFile.setFavourite(parts[5].equals("1"));
                     if (fileExistsOnDisk(multimediaFile)) {
                         multimediaFiles.add(multimediaFile);
                     }
