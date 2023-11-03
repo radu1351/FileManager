@@ -6,6 +6,11 @@ import java.util.Date;
 
 public class FileReader {
 
+    /**
+     * Returns an MultimediaFile based on the file selected in the JFileChooser
+     * The file can be one of the following formats: JPG, PNG, MP3, WAV
+     * @return the MultimediaFile selected
+     */
     public static MultimediaFile selectFile() {
         JFileChooser chooser = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter(

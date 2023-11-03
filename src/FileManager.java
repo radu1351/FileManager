@@ -5,6 +5,11 @@ import java.util.Scanner;
 
 public class FileManager {
 
+    /**
+     * Saves a list of files given as an argument to the specific text file.
+     *
+     * @param multimediaFiles The files to be saved in the txt file
+     */
     public static void saveFilesToTxt(ArrayList<MultimediaFile> multimediaFiles) {
         createTxtFile();
         try {
@@ -19,6 +24,11 @@ public class FileManager {
         }
     }
 
+    /**
+     * Retrieves a list of MultimediaFiles from the specific text file.
+     *
+     * @return The file loaded from the text file.
+     */
     public static ArrayList<MultimediaFile> readFilesFromTxt() {
         createTxtFile();
         ArrayList<MultimediaFile> multimediaFiles = new ArrayList<>();
@@ -54,10 +64,19 @@ public class FileManager {
         return multimediaFiles;
     }
 
+    /**
+     * Checks if a MultimediaFile given as a argument exists on disk
+     *
+     * @param multimediaFile The file to be checked if it exists on disk
+     * @return A boolean, meaning if the file exists on disk or not
+     */
     public static boolean fileExistsOnDisk(MultimediaFile multimediaFile) {
         return new File(multimediaFile.getPath()).exists();
     }
 
+    /**
+     * Creates a blank text file with the specific name.
+     */
     private static void createTxtFile() {
         try {
             File file = new File("multimediaFiles.txt");

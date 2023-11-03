@@ -66,6 +66,9 @@ public class Main {
     }
 
 
+    /**
+     * Loads the data from the text file at the opening of the application
+     */
     private static void loadDataFromTxt() {
         multimediaFiles = FileManager.readFilesFromTxt();
         multimediaFiles.forEach(multimediaFile -> {
@@ -74,6 +77,9 @@ public class Main {
     }
 
 
+    /**
+     * Opens a file with the index to be typed in the console
+     */
     private static void openFile() {
         int i = 1;
         for (MultimediaFile file : multimediaFiles) {
@@ -95,6 +101,9 @@ public class Main {
         }
     }
 
+    /**
+     * Prints the statistics menu and waits for the next command.
+     */
     private static void showStatisticsMenu() {
         int option = 0;
         while (option != 3) {
@@ -131,6 +140,9 @@ public class Main {
         }
     }
 
+    /**
+     * Prints the favourite files menu and waits for the next command.
+     */
     private static void showFavouriteFilesMenu() {
         int option = 0;
         while (option != 4) {
@@ -195,11 +207,17 @@ public class Main {
         }
     }
 
+    /**
+     * Saves the files to the text file before closing te application.
+     */
     private static void closeApplication() {
         System.out.println("\n--> Salvare date...");
         FileManager.saveFilesToTxt(multimediaFiles);
     }
 
+    /**
+     * Prints the main menu.
+     */
     public static void showMenu() {
         System.out.println("\n___________MENIU_________\n" +
                 "| 1.Afisare fisiere.    |\n" +
@@ -213,6 +231,9 @@ public class Main {
         System.out.print("\nIntroduceti optiunea dvs: ");
     }
 
+    /**
+     * Prints the list with the added files.
+     */
     public static void printAddedFiles() {
         if (!multimediaFiles.isEmpty()) {
             System.out.println("\n--> Fisierele adaugate sunt: ");
@@ -222,6 +243,9 @@ public class Main {
         }
     }
 
+    /**
+     * Adds a file from the disk, checking if the file was already added or not.
+     */
     public static void addFile() {
         MultimediaFile selectedFile = FileReader.selectFile();
 
@@ -238,6 +262,9 @@ public class Main {
         }
     }
 
+    /**
+     * Deletes a file from the list. The file is deleted only in the application, and not from disk.
+     */
     public static void deleteFile() {
         int i = 1;
         for (MultimediaFile file : multimediaFiles) {
