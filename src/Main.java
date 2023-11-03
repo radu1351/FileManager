@@ -1,7 +1,6 @@
-import java.awt.*;
+import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Scanner;
