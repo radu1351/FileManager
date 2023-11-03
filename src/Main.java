@@ -1,3 +1,7 @@
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Scanner;
@@ -14,7 +18,7 @@ public class Main {
         loadDataFromTxt();
 
         int option = 0;
-        while (option != 6) {
+        while (option != 7) {
             showMenu();
             option = sc.nextInt();
             switch (option) {
@@ -23,27 +27,34 @@ public class Main {
                     break;
                 }
                 case 2: {
-                    addFile();
-                    break;
-                }
-                case 3: {
-                    deleteFile();
-                    break;
-                }
-                case 4: {
                     if (!multimediaFiles.isEmpty()) {
-                        showStatisticsMenu();
-                    }
-                    else{
+                        openFile();
+                    } else {
                         System.out.println("\n--> Nu exista fisiere adaugate.");
                     }
                     break;
                 }
+                case 3: {
+                    addFile();
+                    break;
+                }
+                case 4: {
+                    deleteFile();
+                    break;
+                }
                 case 5: {
-                    showFavouriteFilesMenu();
+                    if (!multimediaFiles.isEmpty()) {
+                        showStatisticsMenu();
+                    } else {
+                        System.out.println("\n--> Nu exista fisiere adaugate.");
+                    }
                     break;
                 }
                 case 6: {
+                    showFavouriteFilesMenu();
+                    break;
+                }
+                case 7: {
                     closeApplication();
                     break;
                 }
@@ -54,6 +65,7 @@ public class Main {
         }
     }
 
+
     private static void loadDataFromTxt() {
         multimediaFiles = FileManager.readFilesFromTxt();
         multimediaFiles.forEach(multimediaFile -> {
@@ -61,6 +73,27 @@ public class Main {
         });
     }
 
+
+    private static void openFile() {
+        int i = 1;
+        for (MultimediaFile file : multimediaFiles) {
+            System.out.println(i++ + ": " + file.getName());
+        }
+        System.out.print("\nSelectati fisierul de deschis: ");
+        int option = sc.nextInt();
+
+        if (option > 0 && option <= multimediaFiles.size()) {
+            try {
+                Desktop desktop = Desktop.getDesktop();
+                File file = new File(multimediaFiles.get(option - 1).getPath());
+                desktop.open(file);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            System.out.println("\n--> Index fisier eronat. ");
+        }
+    }
 
     private static void showStatisticsMenu() {
         int option = 0;
@@ -122,7 +155,7 @@ public class Main {
                 }
                 case 2: {
                     int i = 1;
-                    for (MultimediaFile file : favouriteMultimediaFiles) {
+                    for (MultimediaFile file : multimediaFiles) {
                         System.out.println(i++ + ": " + file.getName());
                     }
                     System.out.print("\nSelectati fisierul de adaugat in lista de favorite: ");
@@ -170,11 +203,12 @@ public class Main {
     public static void showMenu() {
         System.out.println("\n___________MENIU_________\n" +
                 "| 1.Afisare fisiere.    |\n" +
-                "| 2.Adaugare fisier.    |\n" +
-                "| 3.Sterere fisier.     |\n" +
-                "| 4.Statistici.         |\n" +
-                "| 5.Fisiere favorite.   |\n" +
-                "| 6.Parasire aplicatie. |\n" +
+                "| 2.Deschidere fisier.  |\n" +
+                "| 3.Adaugare fisier.    |\n" +
+                "| 4.Sterere fisier.     |\n" +
+                "| 5.Statistici.         |\n" +
+                "| 6.Fisiere favorite.   |\n" +
+                "| 7.Parasire aplicatie. |\n" +
                 "_________________________");
         System.out.print("\nIntroduceti optiunea dvs: ");
     }
