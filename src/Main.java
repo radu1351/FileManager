@@ -1,4 +1,3 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Scanner;
@@ -51,8 +50,7 @@ public class Main {
             System.out.println("\n______________STATISTICI_______________\n" +
                     "| 1.Afisare numar fisiere pe formate. |\n" +
                     "| 2.Afisare cel mai utilizat director. |\n" +
-                    "| 3.Afisare cel mai utilizat director. |\n" +
-                    "| 4.Inapoi la meniul principal.       |\n" +
+                    "| 3.Inapoi la meniul principal.       |\n" +
                     "_______________________________________");
 
             System.out.print("\nIntroduceti optiunea dvs: ");
@@ -76,9 +74,6 @@ public class Main {
                     break;
                 }
                 case 3: {
-
-                }
-                case 4: {
                     break;
                 }
             }
@@ -112,7 +107,18 @@ public class Main {
 
     public static void addFile() {
         MultimediaFile selectedFile = FileReader.selectFile();
-        multimediaFiles.add(selectedFile);
+
+        boolean selectedFileExists = false;
+        for (MultimediaFile multimediaFile : multimediaFiles) {
+            if (multimediaFile.getPath().equals(selectedFile.getPath()))
+                selectedFileExists = true;
+        }
+        if (!selectedFileExists) {
+            multimediaFiles.add(selectedFile);
+            System.out.println("\n--> Fisier adaugat cu succes. ");
+        } else {
+            System.out.println("\n--> Fisierul a fost deja adaugat. ");
+        }
     }
 
     public static void deleteFile() {
